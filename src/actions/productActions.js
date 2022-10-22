@@ -4,13 +4,20 @@ import {
     ADD_PRODUCT_ERROR
 } from '../types';
 
+import axiosClient from '../config/axios';
+
 // Create new products
 export function createNewProductAction (product) {
-    return (dispatch) => {
+    return async(dispatch) => {
         dispatch(addProduct());
         try {
+            // insert in API
+            await axiosClient.post('/products',product);
+            // if insert suceed, update state
             dispatch(addProductSucceed(product))
         } catch (error) {
+            console.log(error);
+            // if theres an error change state
             dispatch(addProductError(true));
         }
     }
@@ -28,6 +35,7 @@ const addProductSucceed = product => ({
 })
 
 // if there's an error
-const addProductError = () => ({
+const addProductError = state => ({
     type: ADD_PRODUCT_ERROR,
+    payload: state
 })

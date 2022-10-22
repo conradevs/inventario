@@ -22,8 +22,14 @@ export default function(state= initialState, action) {
         case ADD_PRODUCT_SUCCESS:
             return {
                 ...state,
-                loading: true,
+                loading: false,
                 products:[...state.products,action.payload]
+            }
+        case ADD_PRODUCT_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
             }
         default:
             return state;

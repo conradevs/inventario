@@ -11,10 +11,14 @@ const NewProduct = () => {
     
     // using useDispatch creates function
     const dispatch = useDispatch();
+
+    // Access to store state
+    const loading = useSelector( state => state.products.loading);
+    const error = useSelector(state => state.products.error);
     
     // calling action from productAction
     const addProduct = product => dispatch(createNewProductAction(product));
-
+    
     // When submit
     const submitNewProduct = e => {
         e.preventDefault();
@@ -68,6 +72,8 @@ const NewProduct = () => {
                                     Add Product
                                 </button>
                             </form>
+                            {loading ? <p>Loading...</p>: null}
+                            {error ? <p className= "alert alert-danger p2 mt-4 text-center">There was an error</p>: null}
                         </div>
                     </div>
                 </div>
