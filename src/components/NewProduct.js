@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 // Redux actions
 import {createNewProductAction} from '../actions/productActions';
 
 const NewProduct = () => {
-
+    const navigate = useNavigate();
     // component State
     const [name,saveName] = useState('');
     const [price,savePrice] = useState(0);
@@ -30,7 +31,13 @@ const NewProduct = () => {
         // check for errors
 
         // create new product
-        addProduct({name,price});
+        addProduct({
+            name,
+            price
+        });
+
+        // redirect to home
+        navigate('/');
     }
     return (
             <div className="row justify-content-center">
