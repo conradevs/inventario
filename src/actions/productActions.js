@@ -91,11 +91,33 @@ const downloadProductsError = () => ({
 // Select and delete product
 export function deleteProductAction(id) {
     return async (dispatch) => {
-        dispatch(getProductDelete());
+        dispatch(getProductDelete(id));
+        try {
+            await axiosClient.delete(`/products/${id}`)
+            dispatch(deleteProductSuccess());
+            // if delete action confirmed
+            Swal.fire(
+                'Deleted',
+                'The product has been deleted successfully',
+                'success'
+            )
+        } catch (error) {
+            console.log(error);
+            dispatch(deleteProductError());
+        }
     }
 }
 
 const getProductDelete = id => ({
     type: GET_PRODUCT_DELETE,
     payload: id
+})
+
+const deleteProductSuccess = () => ({
+    type: PRODUCT_DELETED_SUCCESS
+})
+
+const deleteProductError = () => ({
+    type: PRODUCT_DELETED_ERROR,
+    payload: true
 })

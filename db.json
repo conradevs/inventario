@@ -21,11 +21,6 @@
       "id": 4
     },
     {
-      "name": "Jugo de Fresa",
-      "price": "200",
-      "id": 5
-    },
-    {
       "name": "Rib eye",
       "price": 400,
       "id": 6
@@ -41,24 +36,9 @@
       "id": 8
     },
     {
-      "name": "coke",
-      "price": 300,
-      "id": 9
-    },
-    {
-      "name": "pepsi",
-      "price": 275,
-      "id": 10
-    },
-    {
       "name": "alfajor",
       "price": 50,
       "id": 11
-    },
-    {
-      "name": "ball",
-      "price": 500,
-      "id": 12
     },
     {
       "name": "Pineapple juice",
@@ -66,19 +46,9 @@
       "id": 13
     },
     {
-      "name": "Pineapple juice",
-      "price": 100,
-      "id": 14
-    },
-    {
       "name": "knife",
       "price": 200,
       "id": 15
-    },
-    {
-      "name": "potatos",
-      "price": 40,
-      "id": 16
     }
   ]
 }
