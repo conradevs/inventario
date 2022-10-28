@@ -9,7 +9,7 @@ const Product = ({product}) => {
     const {name,price,id} = product
     
     const dispatch = useDispatch();
-    const history = useHistory();
+    const history = useHistory(); // set history for redirection
 
     // Delete confirmation
     const productDeleteConfirmation = id => {
