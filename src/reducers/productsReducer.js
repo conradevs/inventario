@@ -10,7 +10,8 @@ import {
     PRODUCT_DELETED_ERROR,
     GET_PRODUCT_EDIT,
     PRODUCT_EDITED_SUCCESS,
-    PRODUCT_EDITED_ERROR
+    PRODUCT_EDITED_ERROR,
+    START_PRODUCT_EDIT
 } from '../types';
 
 // Each reducer has its own state
@@ -19,7 +20,8 @@ const initialState = {
     products: [],
     error: null,
     loading: false,
-    deleteProduct: null
+    deleteProduct: null,
+    productEdit: null
 }
 
 export default function(state= initialState, action) {

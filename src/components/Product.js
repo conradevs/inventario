@@ -1,15 +1,15 @@
 import React from 'react'
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import Swal from 'sweetalert2';
 // Redux
 import { useDispatch } from 'react-redux'
-import { deleteProductAction } from '../actions/productActions'
+import { deleteProductAction, getProductEdit } from '../actions/productActions'
 
 const Product = ({product}) => {
     const {name,price,id} = product
     
     const dispatch = useDispatch();
-    const history = useHistory(); // set history for redirection
+    const navigate = useNavigate(); // set history for redirection
 
     // Delete confirmation
     const productDeleteConfirmation = id => {
@@ -33,7 +33,8 @@ const Product = ({product}) => {
     }
     // function for programmed redirect
     const redirectEdit = product => {
-        history.push(`/product/edit/${product.id }`);
+        dispatch(getProductEdit(product));
+        navigate(`/products/edit/${product.id }`);
     }
     return ( 
         <tr>
