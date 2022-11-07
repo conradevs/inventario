@@ -41,6 +41,7 @@ export default function(state= initialState, action) {
         case ADD_PRODUCT_ERROR:
         case START_PRODUCTS_ERROR:
         case PRODUCT_DELETED_ERROR:
+        case PRODUCT_EDITED_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -67,6 +68,15 @@ export default function(state= initialState, action) {
             return {
                 ...state,
                 productEdit: action.payload
+            }
+        case PRODUCT_EDITED_SUCCESS:
+            return {
+                ...state,
+                productEdit: null,
+                products: state.products.map(product => 
+                    product.id === action.payload.id ? product = action.payload :
+                    product    
+                )
             }
         default:
             return state;

@@ -1,11 +1,43 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import { editProductAction } from '../actions/productActions';
+import {useNavigate} from 'react-router-dom';
+
 const NewProduct = () => {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    // New product state
+    const [product,saveProduct] = useState({
+        name: '',
+        price: ''
+    });
+
     // Product for edition
-    const product = useSelector(state => state.products.productEdit);
-    if(!product) return null;
-    const {name, price, id} = product;
+    const productEdit = useSelector(state => state.products.productEdit);
+    
+    // refresh state automatically
+    useEffect ( () => {
+        saveProduct(productEdit);
+    },[productEdit])
+
+    // Read data from edition form
+    const onChangeEditForm = e => {
+        saveProduct({
+            ...product,
+            [e.target.name] : e.target.value
+        })
+    };
+
+    const {name, price} = product;
+
+    const submitEditProduct = e => {
+        e.preventDefault();
+        dispatch(editProductAction(product));
+        navigate('/');
+    }
+
     return (
         <div className="row justify-content-center">
             <div className="col-md-8">
@@ -14,7 +46,9 @@ const NewProduct = () => {
                         <h2 className="text-center mb-4 font-weight-bold">
                             Edit Product
                         </h2>
-                        <form>
+                        <form
+                            onSubmit={submitEditProduct}
+                        >
                             <div className='form-group'>
                                 <label>Product Name</label>
                                 <input
@@ -33,6 +67,7 @@ const NewProduct = () => {
                                     placeholder='Price'
                                     name='price'
                                     value={price}
+                                    onChange={onChangeEditForm}
                                 ></input>
                             </div>
                             <button

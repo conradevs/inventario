@@ -12,7 +12,7 @@
     },
     {
       "name": "Jugo de Naranja",
-      "price": "300",
+      "price": "230",
       "id": 3
     },
     {
@@ -32,7 +32,7 @@
     },
     {
       "name": "Doritos",
-      "price": 150,
+      "price": "170",
       "id": 8
     },
     {
@@ -49,6 +49,16 @@
       "name": "knife",
       "price": 200,
       "id": 15
+    },
+    {
+      "name": "Chorizo",
+      "price": 150,
+      "id": 16
+    },
+    {
+      "name": "termo",
+      "price": 500,
+      "id": 17
     }
   ]
 }

@@ -137,3 +137,32 @@ const getProductAction = product => ({
     type: GET_PRODUCT_EDIT,
     payload: product
 })
+
+// Edit some api register and state
+
+export function editProductAction(product) {
+   return async (dispatch) => {
+    dispatch(editProduct())
+        try {
+            await axiosClient.put(`/products/${product.id}`,product);
+            dispatch(editProductSuccess(product));
+        } catch (error) {
+            console.log(error);
+            dispatch(editProductError());
+        }
+    } 
+}
+
+const editProduct = () => ({
+    type: START_PRODUCT_EDIT
+});
+
+const editProductSuccess = (product) => ({
+    type: PRODUCT_EDITED_SUCCESS,
+    payload: product
+});
+
+const editProductError = () => ({
+    type: PRODUCT_EDITED_ERROR,
+    payload: true
+})
